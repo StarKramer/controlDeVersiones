@@ -19,6 +19,7 @@ package edu.eci.pdsw.samples.services;
 import edu.eci.pdsw.samples.entities.Consulta;
 import edu.eci.pdsw.samples.entities.Paciente;
 import edu.eci.pdsw.samples.persistence.DaoFactory;
+import edu.eci.pdsw.samples.persistence.DaoPaciente;
 import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.io.File;
 import java.io.FileInputStream;
@@ -86,6 +87,15 @@ public class ServicesFacade {
      * o de persistencia (por ejemplo, si el paciente ya existe).
      */
     public void registrarNuevoPaciente(Paciente p) throws ServiceFacadeException{
+        DaoFactory daof=DaoFactory.getInstance(properties);
+        try {
+            daof.beginSession();
+            DaoPaciente dp = daof.getDaoPaciente();
+            dp.save(p);
+            daof.endSession();
+        } catch (PersistenceException ex) {
+            Logger.getLogger(ServicesFacade.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
     }
     
