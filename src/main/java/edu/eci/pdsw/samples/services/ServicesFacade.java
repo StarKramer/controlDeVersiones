@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -94,8 +95,19 @@ public class ServicesFacade {
      * @param tipoid el tipo de identificación
      * @param c la consulta a ser agregada
      */
-    public void agregarConsultaAPaciente(int idPaciente,String tipoid,Consulta c){
-        
+    public void agregarConsultaAPaciente(int idPaciente,String tipoid,Consulta c) throws ServiceFacadeException{
+        DaoFactory daof=DaoFactory.getInstance(properties);
+        try{
+            daof.beginSession();
+            Paciente p=daof.getDaoPaciente().load(idPaciente, tipoid);
+            Set<Consulta> cons = p.getConsultas();
+            cons.add(c);
+            p.setConsultas(cons);
+            daof.getDaoPaciente().update(p);
+            daof.endSession();
+        }catch (PersistenceException ex) {
+            throw new ServiceFacadeException("Error al consultar paciente.",ex);
+        }
     }
     
 }
