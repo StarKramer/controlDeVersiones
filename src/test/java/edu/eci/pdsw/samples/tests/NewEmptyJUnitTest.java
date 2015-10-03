@@ -16,6 +16,12 @@
  */
 package edu.eci.pdsw.samples.tests;
 
+import edu.eci.pdsw.samples.entities.Paciente;
+import edu.eci.pdsw.samples.persistence.DaoFactory;
+import edu.eci.pdsw.samples.persistence.DaoPaciente;
+import edu.eci.pdsw.samples.persistence.PersistenceException;
+import java.sql.Date;
+import java.util.Properties;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -34,7 +40,12 @@ public class NewEmptyJUnitTest {
     }
     
     @Test
-    public void registroPacienteTest(){
+    public void registroPacienteTest() throws PersistenceException{
+        Properties properties=new Properties();
+        Paciente p = new Paciente(1030625827, "CC", "Edwin", new Date(1993,6,8));
+        DaoFactory daof=DaoFactory.getInstance(properties);
+        DaoPaciente dp = daof.getDaoPaciente();
+        dp.save(p);
         
     }
     
