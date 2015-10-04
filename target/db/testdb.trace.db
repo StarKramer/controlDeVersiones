@@ -1,0 +1,27 @@
+10-03 10:59:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:05:35 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:06:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:14:57 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:29:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:41:23 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:43:30 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:55:41 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]
+10-03 11:59:48 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: El objeto ya está cerrado
+The object is already closed [90007-184]

@@ -1,0 +1,10 @@
+edu\eci\pdsw\samples\persistence\DaoFactory.class
+edu\eci\pdsw\samples\persistence\jdbcimpl\JDBCDaoFactory.class
+edu\eci\pdsw\samples\persistence\jdbcimpl\JDBCDaoPaciente.class
+edu\eci\pdsw\samples\persistence\PersistenceException.class
+edu\eci\pdsw\samples\services\ServiceFacadeException.class
+edu\eci\pdsw\samples\services\ServicesFacade.class
+edu\eci\pdsw\samples\persistence\DaoPaciente.class
+edu\eci\pdsw\samples\entities\Paciente.class
+edu\eci\pdsw\samples\persistence\jdbcimpl\JDBCDaoFactory$1.class
+edu\eci\pdsw\samples\entities\Consulta.class
