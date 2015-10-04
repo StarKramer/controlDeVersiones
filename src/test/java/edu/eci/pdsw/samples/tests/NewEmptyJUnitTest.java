@@ -24,10 +24,15 @@ import edu.eci.pdsw.samples.persistence.PersistenceException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Connection;
 import java.sql.Date;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.LinkedHashSet;
 import java.util.Properties;
 import java.util.Set;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -53,7 +58,7 @@ public class NewEmptyJUnitTest {
             entrada = new FileInputStream("src\\main\\resources\\applicationconfig.properties");
             properties.load(entrada);
             Set<Consulta> consultas = new LinkedHashSet<>();;
-            Paciente p = new Paciente(2365453, "cc", "lola", Date.valueOf("1993-06-08"));
+            Paciente p = new Paciente(1, "CC", "lola", Date.valueOf("1993-06-08"));
             Consulta c = new Consulta(Date.valueOf("2001-06-06"), "blablabala");
             consultas.add(c);
             p.setConsultas(consultas);
@@ -82,12 +87,23 @@ public class NewEmptyJUnitTest {
             DaoFactory daof=DaoFactory.getInstance(properties);
             daof.beginSession();
             DaoPaciente dp = daof.getDaoPaciente();
-            Paciente p = dp.load(2365453, "cc");
+            Paciente p = dp.load(1, "CC");
             System.out.println(p.getNombre());
             daof.endSession();
         }catch(IOException ex){
             ex.printStackTrace();
         }
+    }
+    
+    @After
+    public void clearDB() throws SQLException{
+        Connection conn = DriverManager.getConnection("jdbc:h2:file:./target/db/testdb;MODE=MYSQL", "sa", "");      
+        Statement stmt = conn.createStatement();
+        stmt.execute("delete from CONSULTAS");
+        stmt.execute("delete from PACIENTES");
+        conn.commit();
+        conn.close();
+
     }
     
 }
